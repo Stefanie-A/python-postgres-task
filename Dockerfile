@@ -1,16 +1,11 @@
-ARG PYTHON_VERSION=3.12.4
-FROM python:${PYTHON_VERSION}-slim as base
+FROM python:3-slim as base
 
 ENV PYTHONDONTWRITEBYTECODE=1
 
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /app
+ADD task.py /
 
-RUN python -m pip install -r requirements.txt
+RUN pip install psycopg2-binary
 
-COPY . .
-
-EXPOSE 8000
-
-CMD ["python", "task.py"]
+CMD ["python", "./task.py"]
