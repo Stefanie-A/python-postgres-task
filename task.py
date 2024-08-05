@@ -15,11 +15,11 @@ try:
 
     cur = conn.cursor()
     cur.execute("""
-    CREATE TABLE IF NOT EXISTS task (
+        CREATE TABLE IF NOT EXISTS task (
         id BIGSERIAL PRIMARY KEY,
         name VARCHAR(50) UNIQUE NOT NULL,
         isActive BOOLEAN DEFAULT FALSE
-    );
+        );
     """)
 
     conn.commit()
