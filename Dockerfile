@@ -6,6 +6,6 @@ ENV PYTHONUNBUFFERED=1
 
 ADD task.py /
 
-RUN pip install psycopg2-binary
+RUN pip install psycopg2-binary python-dotenv
 
 CMD ["python", "./task.py"]
