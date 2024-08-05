@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-
+try:
 conn = psycopg2.connect(
     host = os.getenv("host"),
     user = os.getenv("username"),
@@ -27,5 +27,12 @@ fetch_query = "SELECT * FROM task WHERE isActive = TRUE;"
     active_tasks = cur.fetchall()
     print(f"Number of active tasks: {len(active_tasks)}")
 
-cur.close()
-conn.close()
+Exception as e:
+ print(f"An error occurred: {e}")
+
+finally:
+    if cur is not None:
+        cur.close()
+    if conn is not None:
+        conn.close()
+
