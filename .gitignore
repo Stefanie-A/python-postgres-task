@@ -1,2 +1,4 @@
 .env
 .dockerignore
+compose.yaml
+README.Docker.md
