@@ -4,8 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-try:
-    conn = psycopg2.connect(
+ conn = psycopg2.connect(
         host=os.getenv("host"),
         user=os.getenv("username"),
         database=os.getenv("database"),
@@ -24,6 +23,8 @@ try:
 
     conn.commit()
 
+
+try:   
     fetch_query = "SELECT * FROM task WHERE isActive = TRUE;"
     cur.execute(fetch_query)
     active_tasks = cur.fetchall()
