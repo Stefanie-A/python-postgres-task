@@ -4,24 +4,24 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
- conn = psycopg2.connect(
-        host=os.getenv("host"),
-        user=os.getenv("username"),
-        database=os.getenv("database"),
-        password=os.getenv("password"),
-        port=os.getenv("port")
+conn = psycopg2.connect(
+    host=os.getenv("host"),
+    user=os.getenv("username"),
+    database=os.getenv("database"),
+    password=os.getenv("password"),
+    port=os.getenv("port")
     )
 
-    cur = conn.cursor()
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS task (
-        id BIGSERIAL PRIMARY KEY,
-        name VARCHAR(50) UNIQUE NOT NULL,
-        isActive BOOLEAN DEFAULT FALSE
-        );
+cur = conn.cursor()
+cur.execute("""
+    CREATE TABLE IF NOT EXISTS task (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(50) UNIQUE NOT NULL,
+    isActive BOOLEAN DEFAULT FALSE
+    );
     """)
 
-    conn.commit()
+conn.commit()
 
 
 try:   
